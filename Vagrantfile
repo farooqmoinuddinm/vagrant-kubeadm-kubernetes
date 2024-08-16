@@ -37,9 +37,9 @@ Vagrant.configure("2") do |config|
     controlplane.vm.provider "vmware_fusion" do |vb|
         vb.cpus = settings["nodes"]["control"]["cpu"]
         vb.memory = settings["nodes"]["control"]["memory"]
-        if settings["cluster_name"] and settings["cluster_name"] != ""
-          vb.customize ["modifyvm", :id, "--groups", ("/" + settings["cluster_name"])]
-        end
+        #if settings["cluster_name"] and settings["cluster_name"] != ""
+        #  vb.customize ["modifyvm", :id, "--groups", ("/" + settings["cluster_name"])]
+        # end
     end
     controlplane.vm.provision "shell",
       env: {
@@ -73,9 +73,9 @@ Vagrant.configure("2") do |config|
       node.vm.provider "vmware_fusion" do |vb|
           vb.cpus = settings["nodes"]["workers"]["cpu"]
           vb.memory = settings["nodes"]["workers"]["memory"]
-          if settings["cluster_name"] and settings["cluster_name"] != ""
-            vb.customize ["modifyvm", :id, "--groups", ("/" + settings["cluster_name"])]
-          end
+          #if settings["cluster_name"] and settings["cluster_name"] != ""
+          #  vb.customize ["modifyvm", :id, "--groups", ("/" + settings["cluster_name"])]
+          # end
       end
       node.vm.provision "shell",
         env: {
