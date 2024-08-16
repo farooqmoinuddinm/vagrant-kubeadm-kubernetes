@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
         controlplane.vm.synced_folder shared_folder["host_path"], shared_folder["vm_path"]
       end
     end
-    controlplane.vm.provider "virtualbox" do |vb|
+    controlplane.vm.provider "vmware_fusion" do |vb|
         vb.cpus = settings["nodes"]["control"]["cpu"]
         vb.memory = settings["nodes"]["control"]["memory"]
         if settings["cluster_name"] and settings["cluster_name"] != ""
@@ -70,7 +70,7 @@ Vagrant.configure("2") do |config|
           node.vm.synced_folder shared_folder["host_path"], shared_folder["vm_path"]
         end
       end
-      node.vm.provider "virtualbox" do |vb|
+      node.vm.provider "vmware_fusion" do |vb|
           vb.cpus = settings["nodes"]["workers"]["cpu"]
           vb.memory = settings["nodes"]["workers"]["memory"]
           if settings["cluster_name"] and settings["cluster_name"] != ""
